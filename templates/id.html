@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Maratona News</title>
+  
+  <!-- AQUI IMPORTO UM ESTILO CSS -->
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+  <header>
+    <h1>{{c.title}}</h1>
+    <div>
+      <p>{{c.points}} points | By: {{c.author}} | <a href="">{{c.url}}</a></p>
+    </div>
+  </header>
+  <main>
+  <!-- BLOCO DE UM COMENTARIO -->
+      {% for comentario in comentarios %}
+      <div>
+        {% if comentario.author == None %}
+        <p>[deleted]</p>
+        {% else %}
+          <strong>{{comentario.author}}</strong>
+          <p>{{comentario.text | safe}}</p>
+        {% endif %}
+      </div>
+      <hr />
+      {% endfor %}
+    <!-- ENCERRA BLOCO DE UM COMENTARIO -->
+  </main>
+</body>
+
+</html>

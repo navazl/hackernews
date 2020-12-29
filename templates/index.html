@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Maratona News</title>
+  
+  <!-- AQUI IMPORTO UM ESTILO CSS -->
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+  
+  <!-- APÓS VER ESSE BLOCO DE CÓDIGO PODE APAGAR, SÓ PRA TE MOSTRA UM EXEMPLO DE HTML QUE USA OS ESTILOS DO CSS (PRA FICAR BONITINHO ;) )-->
+  <header>
+    <h1>Maratona News</h1>
+    <div>
+      {% if order_by == None or order_by == "popular" %}
+        <strong>Popular</strong> |
+        <a href="/?order_by=new">Novas</a>
+      {% elif order_by == "new" %}
+        <a href="/?order_by=popular">Popular</a> |
+        <strong>Novas</strong>
+      {% endif %}
+
+
+    </div>
+  </header>
+
+  <main>
+      <!-- BLOCO DE CODIGO EXEMPLO DE 1 MATERIA -->
+      {% for noticia in noticias.hits %}
+      <div>
+        <div>
+          <a href="{{noticia.objectID}}">
+            <h3>{{noticia.title}}</h3>
+          </a>
+          <a href="{{noticia.url}}" target="_blank">
+          ({{noticia.url}})
+          </a>
+        </div>
+
+        <div>
+           {{noticia.points}} | by: {{noticia.author}} | {{noticia.num_comments}} comentários
+        </div>
+      </div>
+      <hr />
+    {% endfor %}
+     <!-- ACABA HTML ESTUTURA DE UMA MATERIA -->
+
+  </main>
+</body>
+</html>
